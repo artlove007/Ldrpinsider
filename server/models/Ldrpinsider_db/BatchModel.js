@@ -29,40 +29,41 @@
 * You will get 10% discount for each one of your friends
 * 
 */
-import { combineReducers } from "redux";
+import BatchModelGenerated from "./generated/BatchModelGenerated";
 
-// START IMPORT REDUCERS
-import HomeReducer from "./HomeReducer";
-import StudentEditReducer from "./StudentEditReducer";
-import StudentListReducer from "./StudentListReducer";
-import ProfessorEditReducer from "./ProfessorEditReducer";
-import ProfessorListReducer from "./ProfessorListReducer";
-
-// END IMPORT REDUCERS
-
-
-// CUSTOM REDUCERS
-import LoginReducer from "./LoginReducer";
-import ProfileReducer from "./ProfileReducer";
-import UserEditReducer from "./UserEditReducer";
-import UserListReducer from "./UserListReducer";
-
-const rootReducer = combineReducers({
+const customModel = {
   
-  // INSERT HERE YOUR CUSTOM REDUCERS
-  LoginReducer,
-  ProfileReducer,
-  UserEditReducer,
-  UserListReducer,
+  /**
+   * Customize here your schema with custom attributes
+   * 
+   * EXAMPLE:
+    
+    init() {
+      let schema = BatchModelGenerated.init();
+  
+      schema.add({
+        extraCustomField: Object
+      });
+    },
+     
+   */
 
-  // START COMBINE REDUCERS
-	HomeReducer,
-	StudentEditReducer,
-	StudentListReducer,
-	ProfessorEditReducer,
-	ProfessorListReducer,
- // END COMBINE REDUCERS
 
-});
+  /**
+   * Override here your custom queries
+   * EXAMPLE:
+   *
+   
+    async get(id) {
+      console.log("This is my custom query");
+      return await BatchModelGenerated.getModel().findOne({ _id: id });
+    }
 
-export default rootReducer;
+   */
+
+};
+
+export default {
+  ...BatchModelGenerated,
+  ...customModel
+};

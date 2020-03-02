@@ -89,10 +89,6 @@ const generatedModel = {
       
       // EXTERNAL RELATIONS
       /*
-      Tid: [{
-        type: Schema.ObjectId,
-        ref: "Student"
-      }],
       */
     });
 

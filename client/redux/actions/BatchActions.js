@@ -29,40 +29,28 @@
 * You will get 10% discount for each one of your friends
 * 
 */
-import { combineReducers } from "redux";
+import actionsFunction from "./generated/BatchActionsGenerated";
 
-// START IMPORT REDUCERS
-import HomeReducer from "./HomeReducer";
-import StudentEditReducer from "./StudentEditReducer";
-import StudentListReducer from "./StudentListReducer";
-import ProfessorEditReducer from "./ProfessorEditReducer";
-import ProfessorListReducer from "./ProfessorListReducer";
-
-// END IMPORT REDUCERS
-
-
-// CUSTOM REDUCERS
-import LoginReducer from "./LoginReducer";
-import ProfileReducer from "./ProfileReducer";
-import UserEditReducer from "./UserEditReducer";
-import UserListReducer from "./UserListReducer";
-
-const rootReducer = combineReducers({
+// You can customize the base actions overriding the object "actionsFunction" as shown in the example below:
+/** 
+ // EXAMPLE:
+ 
+ import BatchApi from "../../api/BatchApi";
+ 
+ actionsFunction.loadBatchList = function() {
+   return function(dispatch) {
+     console.log("This is my custom function");
+     return BatchApi
+     .getBatchList()
+     .then(list => {
+       dispatch(actionsFunction.loadBatchSuccess(list));
+      })
+      .catch(error => {
+        throw error;
+      });
+    };
+  };
   
-  // INSERT HERE YOUR CUSTOM REDUCERS
-  LoginReducer,
-  ProfileReducer,
-  UserEditReducer,
-  UserListReducer,
+*/
 
-  // START COMBINE REDUCERS
-	HomeReducer,
-	StudentEditReducer,
-	StudentListReducer,
-	ProfessorEditReducer,
-	ProfessorListReducer,
- // END COMBINE REDUCERS
-
-});
-
-export default rootReducer;
+export default actionsFunction;

@@ -43,6 +43,8 @@ import ChangePwd from "./Screen/ChangePwd";
 
 import StudentEdit from "./Screen/StudentEdit";
 import StudentList from "./Screen/StudentList";
+import ProfessorEdit from "./Screen/ProfessorEdit";
+import ProfessorList from "./Screen/ProfessorList";
 
 /* END MY SCREENS IMPORT */
 
@@ -63,6 +65,8 @@ class AppContainer extends Component {
 
     StudentEdit: { screen: StudentEdit },
     StudentList: { screen: StudentList },
+    ProfessorEdit: { screen: ProfessorEdit },
+    ProfessorList: { screen: ProfessorList },
     
      /* END MY SCREENS */
       },

@@ -80,10 +80,30 @@ const generatedModel = {
         type: "String"
       },
       // RELATIONS
+      _batch: {
+        type: Schema.ObjectId,
+        ref: "Batch"
+      },
+      _student: {
+        type: Schema.ObjectId,
+        ref: "Student"
+      },
+      _student: [{
+        type: Schema.ObjectId,
+        ref: "Semester"
+      }],
+      _subject: {
+        type: Schema.ObjectId,
+        ref: "subject"
+      },
       
       
       // EXTERNAL RELATIONS
       /*
+      _teacher: [{
+        type: Schema.ObjectId,
+        ref: "Student"
+      }],
       */
     });
 
@@ -112,6 +132,55 @@ const generatedModel = {
   // CRUD METHODS
 
 
+  /**
+  * professorModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  async create(item) {
+    const obj = new generatedModel.model(item);
+    return await obj.save();
+  },
+  
+  /**
+  * professorModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  async delete(id) {
+    return await generatedModel.model.findByIdAndRemove(id);
+  },
+  
+  /**
+  * professorModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  async get(id) {
+    return await generatedModel.model.findOne({ _id : id });
+  },
+  
+  /**
+  * professorModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  async list() {
+    return await generatedModel.model.find();
+  },
+  
+  /**
+  * professorModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  async update(item) { 
+    return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
+  },
+  
 
 
 };

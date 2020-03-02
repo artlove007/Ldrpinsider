@@ -38,6 +38,8 @@ import properties from "../properties.js";
 
 // Start Import Models
 
+import BatchModel from "../models/Ldrpinsider_db/BatchModel";
+import BranchModel from "../models/Ldrpinsider_db/BranchModel";
 import SemesterModel from "../models/Ldrpinsider_db/SemesterModel";
 import StudentModel from "../models/Ldrpinsider_db/StudentModel";
 import UserModel from "../models/Ldrpinsider_db/UserModel";
@@ -59,6 +61,8 @@ class Database {
 
     // Start Init Models
 
+		BatchModel.init();
+		BranchModel.init();
 		SemesterModel.init();
 		StudentModel.init();
 		UserModel.init();

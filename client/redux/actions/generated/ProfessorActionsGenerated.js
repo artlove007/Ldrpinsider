@@ -59,6 +59,100 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create professor
+  createProfessor: function(professor) {
+    return function(dispatch) {
+      return ProfessorApi
+        .createProfessor(professor)
+        .then(professor => {
+          dispatch(actionsFunction.createProfessorSuccess(professor));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createProfessorSuccess: function(professor) {
+    return { type: types.CREATE_PROFESSOR_SUCCESS, payload: professor };
+  },
+
+
+  // Delete professor
+  deleteProfessor: function(id) {
+    return function(dispatch) {
+      return ProfessorApi
+        .deleteProfessor(id)
+        .then(professor => {
+          dispatch(actionsFunction.deleteProfessorSuccess(professor));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteProfessorSuccess: function(professor) {
+    return { type: types.DELETE_PROFESSOR_SUCCESS, payload: professor };
+  },
+
+
+  // Get professor
+  loadProfessor: function(id) {
+    return function(dispatch) {
+      return ProfessorApi
+        .getOneProfessor(id)
+        .then(professor => {
+          dispatch(actionsFunction.loadProfessorSuccess(professor));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadProfessorSuccess: function(professor) {
+    return { type: types.GET_PROFESSOR_SUCCESS, payload: professor };
+  },
+
+  // Load  list
+  loadProfessorList: function() {
+    return function(dispatch) {
+      return ProfessorApi
+        .getProfessorList()
+        .then(list => {
+          dispatch(actionsFunction.loadProfessorListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadProfessorListSuccess: function(list) {
+    return { type: types.LIST_PROFESSOR_SUCCESS, payload: list };
+  },
+
+	
+  // Save professor
+  saveProfessor: function(professor) {
+    return function(dispatch) {
+      return ProfessorApi
+        .saveProfessor(professor)
+        .then(professor => {
+          dispatch(actionsFunction.saveProfessorSuccess(professor));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveProfessorSuccess: function(professor) {
+    return { type: types.UPDATE_PROFESSOR_SUCCESS, payload: professor };
+  },
+
+
 };
 
 export default actionsFunction;

@@ -29,40 +29,31 @@
 * You will get 10% discount for each one of your friends
 * 
 */
-import { combineReducers } from "redux";
+import BranchApiGenerated from "./generated/BranchApiGenerated";
 
-// START IMPORT REDUCERS
-import HomeReducer from "./HomeReducer";
-import StudentEditReducer from "./StudentEditReducer";
-import StudentListReducer from "./StudentListReducer";
-import ProfessorEditReducer from "./ProfessorEditReducer";
-import ProfessorListReducer from "./ProfessorListReducer";
+// Dependencies
+//import axios from "axios";
+//import { properties } from "../config/properties";
 
-// END IMPORT REDUCERS
+class BranchApi extends BranchApiGenerated {
+  // You can customize the base actions overriding the object "actionsFunction" as shown in the example below:
+  /** 
+  // EXAMPLE:
+ 
+  // Get Branch List
+  static getBranchList() {
+    console.log("This is my custom API");
 
+    return fetch("http://localhost:3000/api/branchs")
+      .then(response => {
+        return response.json();
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+  */
 
-// CUSTOM REDUCERS
-import LoginReducer from "./LoginReducer";
-import ProfileReducer from "./ProfileReducer";
-import UserEditReducer from "./UserEditReducer";
-import UserListReducer from "./UserListReducer";
+}
 
-const rootReducer = combineReducers({
-  
-  // INSERT HERE YOUR CUSTOM REDUCERS
-  LoginReducer,
-  ProfileReducer,
-  UserEditReducer,
-  UserListReducer,
-
-  // START COMBINE REDUCERS
-	HomeReducer,
-	StudentEditReducer,
-	StudentListReducer,
-	ProfessorEditReducer,
-	ProfessorListReducer,
- // END COMBINE REDUCERS
-
-});
-
-export default rootReducer;
+export default BranchApi;

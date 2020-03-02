@@ -83,14 +83,26 @@ const generatedModel = {
         type: "Number"
       },
       // RELATIONS
-      Tid: [{
+      _result: {
         type: Schema.ObjectId,
-        ref: "User"
+        ref: "result"
+      },
+      _subject: {
+        type: Schema.ObjectId,
+        ref: "subject"
+      },
+      _teacher: [{
+        type: Schema.ObjectId,
+        ref: "professor"
       }],
       
       
       // EXTERNAL RELATIONS
       /*
+      _student: {
+        type: Schema.ObjectId,
+        ref: "professor"
+      },
       */
     });
 

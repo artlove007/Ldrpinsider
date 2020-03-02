@@ -65,6 +65,15 @@ export default class SideBar extends Component {
             />
             <Text>List Student</Text>
           </ListItem>
+          
+          <ListItem onPress={() => this.props.navigation.navigate("professorList")}>
+            <IconMaterial
+              name="keyboard-arrow-right"
+              size={20}
+              style={styles.icons}
+            />
+            <Text>List professor</Text>
+          </ListItem>
           {/* END MY SCREENS */}
 
           <ListItem itemDivider />

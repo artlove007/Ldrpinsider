@@ -58,6 +58,8 @@ import SecurityController from "../controllers/SecurityController";
 import Database_Ldrpinsider_db from "./Database_Ldrpinsider_db.js";
 
 // Controllers
+import BatchController from "../controllers/Ldrpinsider_db/BatchController";
+import BranchController from "../controllers/Ldrpinsider_db/BranchController";
 import SemesterController from "../controllers/Ldrpinsider_db/SemesterController";
 import StudentController from "../controllers/Ldrpinsider_db/StudentController";
 import UserController from "../controllers/Ldrpinsider_db/UserController";
@@ -144,6 +146,8 @@ class Server {
     SecurityController.init(router);
 
     // Start Init Controllers
+		BatchController.init(router);
+		BranchController.init(router);
 		SemesterController.init(router);
 		StudentController.init(router);
 		UserController.init(router);

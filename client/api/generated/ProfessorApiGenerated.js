@@ -57,6 +57,84 @@ class ProfessorApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * professorService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createProfessor(professor) {
+    return axios.post(ProfessorApiGenerated.contextUrl, professor )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * professorService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteProfessor(id) {
+    return axios.delete(ProfessorApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * professorService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneProfessor(id) {
+    return axios.get(ProfessorApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * professorService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getProfessorList() {
+    return axios.get(ProfessorApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * professorService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveProfessor(professor) {
+    return axios.post(ProfessorApiGenerated.contextUrl + "/" + professor._id, professor )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs
