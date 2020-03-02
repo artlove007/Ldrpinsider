@@ -58,12 +58,147 @@ const generatedControllers = {
    */
   init: router => {
     const baseUrl = `${Properties.api}/result`;
+    router.post(baseUrl + "", authorize([]), ResultController.create);
+    router.delete(baseUrl + "/:id", authorize([]), ResultController.delete);
+    router.get(baseUrl + "/findBybranch/:key", authorize([]), ResultController.findBybranch);
+    router.get(baseUrl + "/findByprofessor/:key", authorize([]), ResultController.findByprofessor);
+    router.get(baseUrl + "/findBysem/:key", authorize([]), ResultController.findBysem);
+    router.get(baseUrl + "/:id", authorize([]), ResultController.get);
+    router.get(baseUrl + "", authorize([]), ResultController.list);
+    router.post(baseUrl + "/:id", authorize([]), ResultController.update);
   },
 
 
   // CRUD METHODS
 
 
+  /**
+  * resultModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  create: async (req, res) => {
+    try {
+      const result = await ResultModel.create(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * resultModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  delete: async (req, res) => {
+    try {
+      const result = await ResultModel.delete(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * resultModel.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBybranch: async (req, res) => {
+    try {
+      const result = await ResultModel.findBybranch(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * resultModel.findByprofessor
+  *   @description CRUD ACTION findByprofessor
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findByprofessor: async (req, res) => {
+    try {
+      const result = await ResultModel.findByprofessor(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * resultModel.findBysem
+  *   @description CRUD ACTION findBysem
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBysem: async (req, res) => {
+    try {
+      const result = await ResultModel.findBysem(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * resultModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  get: async (req, res) => {
+    try {
+      const result = await ResultModel.get(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * resultModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  list: async (req, res) => {
+    try {
+      const result = await ResultModel.list();
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  
+  /**
+  * resultModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  update: async (req, res) => {
+    try {
+      const result = await ResultModel.update(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
   
   // Custom APIs
 

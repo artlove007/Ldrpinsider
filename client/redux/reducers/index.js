@@ -32,11 +32,21 @@
 import { combineReducers } from "redux";
 
 // START IMPORT REDUCERS
+import BatchEditReducer from "./BatchEditReducer";
+import BatchListReducer from "./BatchListReducer";
+import BranchEditReducer from "./BranchEditReducer";
+import BranchListReducer from "./BranchListReducer";
 import HomeReducer from "./HomeReducer";
+import SemesterEditReducer from "./SemesterEditReducer";
+import SemesterListReducer from "./SemesterListReducer";
 import StudentEditReducer from "./StudentEditReducer";
 import StudentListReducer from "./StudentListReducer";
 import ProfessorEditReducer from "./ProfessorEditReducer";
 import ProfessorListReducer from "./ProfessorListReducer";
+import ResultEditReducer from "./ResultEditReducer";
+import ResultListReducer from "./ResultListReducer";
+import SubjectEditReducer from "./SubjectEditReducer";
+import SubjectListReducer from "./SubjectListReducer";
 
 // END IMPORT REDUCERS
 
@@ -56,11 +66,21 @@ const rootReducer = combineReducers({
   UserListReducer,
 
   // START COMBINE REDUCERS
+	BatchEditReducer,
+	BatchListReducer,
+	BranchEditReducer,
+	BranchListReducer,
 	HomeReducer,
+	SemesterEditReducer,
+	SemesterListReducer,
 	StudentEditReducer,
 	StudentListReducer,
 	ProfessorEditReducer,
 	ProfessorListReducer,
+	ResultEditReducer,
+	ResultListReducer,
+	SubjectEditReducer,
+	SubjectListReducer,
  // END COMBINE REDUCERS
 
 });

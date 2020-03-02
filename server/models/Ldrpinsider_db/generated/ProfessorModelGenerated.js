@@ -101,9 +101,18 @@ const generatedModel = {
       // EXTERNAL RELATIONS
       /*
       _teacher: [{
-        type: Schema.ObjectId,
+        type: Schema.ObjectId, 
+        required: true,
         ref: "Student"
       }],
+      professor: [{
+        type: Schema.ObjectId,
+        ref: "subject"
+      }],
+      professor: {
+        type: Schema.ObjectId,
+        ref: "result"
+      },
       */
     });
 
@@ -150,6 +159,36 @@ const generatedModel = {
   */
   async delete(id) {
     return await generatedModel.model.findByIdAndRemove(id);
+  },
+  
+  /**
+  * professorModel.findBy_batch
+  *   @description CRUD ACTION findBy_batch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_batch(key) {
+    return await generatedModel.model.find({ '_batch' : key});
+  },
+  
+  /**
+  * professorModel.findBy_student
+  *   @description CRUD ACTION findBy_student
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_student(key) {
+    return await generatedModel.model.find({ '_student' : key});
+  },
+  
+  /**
+  * professorModel.findBy_subject
+  *   @description CRUD ACTION findBy_subject
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_subject(key) {
+    return await generatedModel.model.find({ '_subject' : key});
   },
   
   /**

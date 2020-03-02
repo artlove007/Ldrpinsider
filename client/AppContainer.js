@@ -41,10 +41,20 @@ import ChangePwd from "./Screen/ChangePwd";
 
 /* START MY SCREENS IMPORT */
 
+import BatchEdit from "./Screen/BatchEdit";
+import BatchList from "./Screen/BatchList";
+import BranchEdit from "./Screen/BranchEdit";
+import BranchList from "./Screen/BranchList";
+import SemesterEdit from "./Screen/SemesterEdit";
+import SemesterList from "./Screen/SemesterList";
 import StudentEdit from "./Screen/StudentEdit";
 import StudentList from "./Screen/StudentList";
 import ProfessorEdit from "./Screen/ProfessorEdit";
 import ProfessorList from "./Screen/ProfessorList";
+import ResultEdit from "./Screen/ResultEdit";
+import ResultList from "./Screen/ResultList";
+import SubjectEdit from "./Screen/SubjectEdit";
+import SubjectList from "./Screen/SubjectList";
 
 /* END MY SCREENS IMPORT */
 
@@ -63,10 +73,20 @@ class AppContainer extends Component {
 
         /* START MY SCREENS */
 
+    BatchEdit: { screen: BatchEdit },
+    BatchList: { screen: BatchList },
+    BranchEdit: { screen: BranchEdit },
+    BranchList: { screen: BranchList },
+    SemesterEdit: { screen: SemesterEdit },
+    SemesterList: { screen: SemesterList },
     StudentEdit: { screen: StudentEdit },
     StudentList: { screen: StudentList },
     ProfessorEdit: { screen: ProfessorEdit },
     ProfessorList: { screen: ProfessorList },
+    ResultEdit: { screen: ResultEdit },
+    ResultList: { screen: ResultList },
+    SubjectEdit: { screen: SubjectEdit },
+    SubjectList: { screen: SubjectList },
     
      /* END MY SCREENS */
       },

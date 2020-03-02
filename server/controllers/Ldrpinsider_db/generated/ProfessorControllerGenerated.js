@@ -60,6 +60,9 @@ const generatedControllers = {
     const baseUrl = `${Properties.api}/professor`;
     router.post(baseUrl + "", authorize([]), ProfessorController.create);
     router.delete(baseUrl + "/:id", authorize([]), ProfessorController.delete);
+    router.get(baseUrl + "/findBy_batch/:key", authorize([]), ProfessorController.findBy_batch);
+    router.get(baseUrl + "/findBy_student/:key", authorize([]), ProfessorController.findBy_student);
+    router.get(baseUrl + "/findBy_subject/:key", authorize([]), ProfessorController.findBy_subject);
     router.get(baseUrl + "/:id", authorize([]), ProfessorController.get);
     router.get(baseUrl + "", authorize([]), ProfessorController.list);
     router.post(baseUrl + "/:id", authorize([]), ProfessorController.update);
@@ -93,6 +96,54 @@ const generatedControllers = {
   delete: async (req, res) => {
     try {
       const result = await ProfessorModel.delete(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * professorModel.findBy_batch
+  *   @description CRUD ACTION findBy_batch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_batch: async (req, res) => {
+    try {
+      const result = await ProfessorModel.findBy_batch(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * professorModel.findBy_student
+  *   @description CRUD ACTION findBy_student
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_student: async (req, res) => {
+    try {
+      const result = await ProfessorModel.findBy_student(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * professorModel.findBy_subject
+  *   @description CRUD ACTION findBy_subject
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_subject: async (req, res) => {
+    try {
+      const result = await ProfessorModel.findBy_subject(req.params.key);
       res.json(result);
     } catch (err) {
       const safeErr = ErrorManager.getSafeError(err);

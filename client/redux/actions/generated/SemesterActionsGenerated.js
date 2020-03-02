@@ -59,6 +59,157 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create semester
+  createSemester: function(semester) {
+    return function(dispatch) {
+      return SemesterApi
+        .createSemester(semester)
+        .then(semester => {
+          dispatch(actionsFunction.createSemesterSuccess(semester));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createSemesterSuccess: function(semester) {
+    return { type: types.CREATE_SEMESTER_SUCCESS, payload: semester };
+  },
+
+
+  // Delete semester
+  deleteSemester: function(id) {
+    return function(dispatch) {
+      return SemesterApi
+        .deleteSemester(id)
+        .then(semester => {
+          dispatch(actionsFunction.deleteSemesterSuccess(semester));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteSemesterSuccess: function(semester) {
+    return { type: types.DELETE_SEMESTER_SUCCESS, payload: semester };
+  },
+
+
+  // Find by branch
+  findBybranch: function(key) {
+    return function(dispatch) {
+      return SemesterApi
+        .findBybranch(key)
+        .then(item => {
+          dispatch(actionsFunction.findBybranchSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBybranchSuccess: function(item) {
+    return { type: types.FINDBYBRANCH_SEMESTER_SUCCESS, payload: item };
+  },
+
+
+  // Find by result
+  findByresult: function(key) {
+    return function(dispatch) {
+      return SemesterApi
+        .findByresult(key)
+        .then(item => {
+          dispatch(actionsFunction.findByresultSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findByresultSuccess: function(item) {
+    return { type: types.FINDBYRESULT_SEMESTER_SUCCESS, payload: item };
+  },
+
+
+  // Find by semester
+  findBysemester: function(key) {
+    return function(dispatch) {
+      return SemesterApi
+        .findBysemester(key)
+        .then(item => {
+          dispatch(actionsFunction.findBysemesterSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBysemesterSuccess: function(item) {
+    return { type: types.FINDBYSEMESTER_SEMESTER_SUCCESS, payload: item };
+  },
+
+
+  // Get semester
+  loadSemester: function(id) {
+    return function(dispatch) {
+      return SemesterApi
+        .getOneSemester(id)
+        .then(semester => {
+          dispatch(actionsFunction.loadSemesterSuccess(semester));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadSemesterSuccess: function(semester) {
+    return { type: types.GET_SEMESTER_SUCCESS, payload: semester };
+  },
+
+  // Load  list
+  loadSemesterList: function() {
+    return function(dispatch) {
+      return SemesterApi
+        .getSemesterList()
+        .then(list => {
+          dispatch(actionsFunction.loadSemesterListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadSemesterListSuccess: function(list) {
+    return { type: types.LIST_SEMESTER_SUCCESS, payload: list };
+  },
+
+	
+  // Save semester
+  saveSemester: function(semester) {
+    return function(dispatch) {
+      return SemesterApi
+        .saveSemester(semester)
+        .then(semester => {
+          dispatch(actionsFunction.saveSemesterSuccess(semester));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveSemesterSuccess: function(semester) {
+    return { type: types.UPDATE_SEMESTER_SUCCESS, payload: semester };
+  },
+
+
 };
 
 export default actionsFunction;

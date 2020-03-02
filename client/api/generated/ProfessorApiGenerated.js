@@ -89,6 +89,54 @@ class ProfessorApiGenerated {
   }
 
   /**
+  * professorService.findBy_batch
+  *   @description CRUD ACTION findBy_batch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_batch(id) {
+    return axios.get(ProfessorApiGenerated.contextUrl + "/findBy_batch/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * professorService.findBy_student
+  *   @description CRUD ACTION findBy_student
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_student(id) {
+    return axios.get(ProfessorApiGenerated.contextUrl + "/findBy_student/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * professorService.findBy_subject
+  *   @description CRUD ACTION findBy_subject
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_subject(id) {
+    return axios.get(ProfessorApiGenerated.contextUrl + "/findBy_subject/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
   * professorService.get
   *   @description CRUD ACTION get
   *   @param ObjectId id Id resource

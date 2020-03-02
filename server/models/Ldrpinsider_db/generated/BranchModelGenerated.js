@@ -72,6 +72,23 @@ const generatedModel = {
       
       // EXTERNAL RELATIONS
       /*
+      branch: [{
+        type: Schema.ObjectId,
+        ref: "subject"
+      }],
+      branch: [{
+        type: Schema.ObjectId,
+        ref: "result"
+      }],
+      branch: [{
+        type: Schema.ObjectId, 
+        required: true,
+        ref: "Student"
+      }],
+      branch: {
+        type: Schema.ObjectId,
+        ref: "Semester"
+      },
       */
     });
 
@@ -100,6 +117,55 @@ const generatedModel = {
   // CRUD METHODS
 
 
+  /**
+  * BranchModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  async create(item) {
+    const obj = new generatedModel.model(item);
+    return await obj.save();
+  },
+  
+  /**
+  * BranchModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  async delete(id) {
+    return await generatedModel.model.findByIdAndRemove(id);
+  },
+  
+  /**
+  * BranchModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  async get(id) {
+    return await generatedModel.model.findOne({ _id : id });
+  },
+  
+  /**
+  * BranchModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  async list() {
+    return await generatedModel.model.find();
+  },
+  
+  /**
+  * BranchModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  async update(item) { 
+    return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
+  },
+  
 
 
 };

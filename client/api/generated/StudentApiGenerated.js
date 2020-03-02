@@ -89,6 +89,102 @@ class StudentApiGenerated {
   }
 
   /**
+  * StudentService.findBy_result
+  *   @description CRUD ACTION findBy_result
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_result(id) {
+    return axios.get(StudentApiGenerated.contextUrl + "/findBy_result/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentService.findBy_subject
+  *   @description CRUD ACTION findBy_subject
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_subject(id) {
+    return axios.get(StudentApiGenerated.contextUrl + "/findBy_subject/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentService.findBy_teacher
+  *   @description CRUD ACTION findBy_teacher
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBy_teacher(id) {
+    return axios.get(StudentApiGenerated.contextUrl + "/findBy_teacher/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentService.findBybatch
+  *   @description CRUD ACTION findBybatch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBybatch(id) {
+    return axios.get(StudentApiGenerated.contextUrl + "/findBybatch/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentService.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBybranch(id) {
+    return axios.get(StudentApiGenerated.contextUrl + "/findBybranch/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * StudentService.findBysemester
+  *   @description CRUD ACTION findBysemester
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBysemester(id) {
+    return axios.get(StudentApiGenerated.contextUrl + "/findBysemester/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
   * StudentService.get
   *   @description CRUD ACTION get
   *   @param ObjectId id Id resource

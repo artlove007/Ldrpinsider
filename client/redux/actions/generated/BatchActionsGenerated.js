@@ -59,6 +59,100 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create batch
+  createBatch: function(batch) {
+    return function(dispatch) {
+      return BatchApi
+        .createBatch(batch)
+        .then(batch => {
+          dispatch(actionsFunction.createBatchSuccess(batch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createBatchSuccess: function(batch) {
+    return { type: types.CREATE_BATCH_SUCCESS, payload: batch };
+  },
+
+
+  // Delete batch
+  deleteBatch: function(id) {
+    return function(dispatch) {
+      return BatchApi
+        .deleteBatch(id)
+        .then(batch => {
+          dispatch(actionsFunction.deleteBatchSuccess(batch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteBatchSuccess: function(batch) {
+    return { type: types.DELETE_BATCH_SUCCESS, payload: batch };
+  },
+
+
+  // Get batch
+  loadBatch: function(id) {
+    return function(dispatch) {
+      return BatchApi
+        .getOneBatch(id)
+        .then(batch => {
+          dispatch(actionsFunction.loadBatchSuccess(batch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadBatchSuccess: function(batch) {
+    return { type: types.GET_BATCH_SUCCESS, payload: batch };
+  },
+
+  // Load  list
+  loadBatchList: function() {
+    return function(dispatch) {
+      return BatchApi
+        .getBatchList()
+        .then(list => {
+          dispatch(actionsFunction.loadBatchListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadBatchListSuccess: function(list) {
+    return { type: types.LIST_BATCH_SUCCESS, payload: list };
+  },
+
+	
+  // Save batch
+  saveBatch: function(batch) {
+    return function(dispatch) {
+      return BatchApi
+        .saveBatch(batch)
+        .then(batch => {
+          dispatch(actionsFunction.saveBatchSuccess(batch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveBatchSuccess: function(batch) {
+    return { type: types.UPDATE_BATCH_SUCCESS, payload: batch };
+  },
+
+
 };
 
 export default actionsFunction;

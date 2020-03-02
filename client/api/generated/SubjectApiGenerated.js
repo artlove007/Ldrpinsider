@@ -57,6 +57,132 @@ class SubjectApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * subjectService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createSubject(subject) {
+    return axios.post(SubjectApiGenerated.contextUrl, subject )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * subjectService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteSubject(id) {
+    return axios.delete(SubjectApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * subjectService.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBybranch(id) {
+    return axios.get(SubjectApiGenerated.contextUrl + "/findBybranch/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * subjectService.findByprofessor
+  *   @description CRUD ACTION findByprofessor
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findByprofessor(id) {
+    return axios.get(SubjectApiGenerated.contextUrl + "/findByprofessor/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * subjectService.findBysemester
+  *   @description CRUD ACTION findBysemester
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBysemester(id) {
+    return axios.get(SubjectApiGenerated.contextUrl + "/findBysemester/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * subjectService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneSubject(id) {
+    return axios.get(SubjectApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * subjectService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getSubjectList() {
+    return axios.get(SubjectApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * subjectService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveSubject(subject) {
+    return axios.post(SubjectApiGenerated.contextUrl + "/" + subject._id, subject )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

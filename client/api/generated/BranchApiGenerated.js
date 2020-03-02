@@ -57,6 +57,84 @@ class BranchApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * BranchService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createBranch(branch) {
+    return axios.post(BranchApiGenerated.contextUrl, branch )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BranchService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteBranch(id) {
+    return axios.delete(BranchApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BranchService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneBranch(id) {
+    return axios.get(BranchApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BranchService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getBranchList() {
+    return axios.get(BranchApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BranchService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveBranch(branch) {
+    return axios.post(BranchApiGenerated.contextUrl + "/" + branch._id, branch )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

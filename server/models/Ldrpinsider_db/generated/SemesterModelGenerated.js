@@ -68,6 +68,18 @@ const generatedModel = {
         type: "String"
       },
       // RELATIONS
+      branch: {
+        type: Schema.ObjectId,
+        ref: "Branch"
+      },
+      result: [{
+        type: Schema.ObjectId,
+        ref: "result"
+      }],
+      semester: {
+        type: Schema.ObjectId,
+        ref: "subject"
+      },
       
       
       // EXTERNAL RELATIONS
@@ -76,6 +88,18 @@ const generatedModel = {
         type: Schema.ObjectId,
         ref: "professor"
       }],
+      sem: {
+        type: Schema.ObjectId,
+        ref: "result"
+      },
+      semester: [{
+        type: Schema.ObjectId,
+        ref: "subject"
+      }],
+      semester: {
+        type: Schema.ObjectId,
+        ref: "Student"
+      },
       */
     });
 
@@ -104,6 +128,85 @@ const generatedModel = {
   // CRUD METHODS
 
 
+  /**
+  * SemesterModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  async create(item) {
+    const obj = new generatedModel.model(item);
+    return await obj.save();
+  },
+  
+  /**
+  * SemesterModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  async delete(id) {
+    return await generatedModel.model.findByIdAndRemove(id);
+  },
+  
+  /**
+  * SemesterModel.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBybranch(key) {
+    return await generatedModel.model.find({ 'branch' : key});
+  },
+  
+  /**
+  * SemesterModel.findByresult
+  *   @description CRUD ACTION findByresult
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findByresult(key) {
+    return await generatedModel.model.find({ 'result' : key});
+  },
+  
+  /**
+  * SemesterModel.findBysemester
+  *   @description CRUD ACTION findBysemester
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBysemester(key) {
+    return await generatedModel.model.find({ 'semester' : key});
+  },
+  
+  /**
+  * SemesterModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  async get(id) {
+    return await generatedModel.model.findOne({ _id : id });
+  },
+  
+  /**
+  * SemesterModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  async list() {
+    return await generatedModel.model.find();
+  },
+  
+  /**
+  * SemesterModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  async update(item) { 
+    return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
+  },
+  
 
 
 };

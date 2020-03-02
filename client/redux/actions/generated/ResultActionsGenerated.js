@@ -59,6 +59,157 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create result
+  createResult: function(result) {
+    return function(dispatch) {
+      return ResultApi
+        .createResult(result)
+        .then(result => {
+          dispatch(actionsFunction.createResultSuccess(result));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createResultSuccess: function(result) {
+    return { type: types.CREATE_RESULT_SUCCESS, payload: result };
+  },
+
+
+  // Delete result
+  deleteResult: function(id) {
+    return function(dispatch) {
+      return ResultApi
+        .deleteResult(id)
+        .then(result => {
+          dispatch(actionsFunction.deleteResultSuccess(result));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteResultSuccess: function(result) {
+    return { type: types.DELETE_RESULT_SUCCESS, payload: result };
+  },
+
+
+  // Find by branch
+  findBybranch: function(key) {
+    return function(dispatch) {
+      return ResultApi
+        .findBybranch(key)
+        .then(item => {
+          dispatch(actionsFunction.findBybranchSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBybranchSuccess: function(item) {
+    return { type: types.FINDBYBRANCH_RESULT_SUCCESS, payload: item };
+  },
+
+
+  // Find by professor
+  findByprofessor: function(key) {
+    return function(dispatch) {
+      return ResultApi
+        .findByprofessor(key)
+        .then(item => {
+          dispatch(actionsFunction.findByprofessorSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findByprofessorSuccess: function(item) {
+    return { type: types.FINDBYPROFESSOR_RESULT_SUCCESS, payload: item };
+  },
+
+
+  // Find by sem
+  findBysem: function(key) {
+    return function(dispatch) {
+      return ResultApi
+        .findBysem(key)
+        .then(item => {
+          dispatch(actionsFunction.findBysemSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBysemSuccess: function(item) {
+    return { type: types.FINDBYSEM_RESULT_SUCCESS, payload: item };
+  },
+
+
+  // Get result
+  loadResult: function(id) {
+    return function(dispatch) {
+      return ResultApi
+        .getOneResult(id)
+        .then(result => {
+          dispatch(actionsFunction.loadResultSuccess(result));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadResultSuccess: function(result) {
+    return { type: types.GET_RESULT_SUCCESS, payload: result };
+  },
+
+  // Load  list
+  loadResultList: function() {
+    return function(dispatch) {
+      return ResultApi
+        .getResultList()
+        .then(list => {
+          dispatch(actionsFunction.loadResultListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadResultListSuccess: function(list) {
+    return { type: types.LIST_RESULT_SUCCESS, payload: list };
+  },
+
+	
+  // Save result
+  saveResult: function(result) {
+    return function(dispatch) {
+      return ResultApi
+        .saveResult(result)
+        .then(result => {
+          dispatch(actionsFunction.saveResultSuccess(result));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveResultSuccess: function(result) {
+    return { type: types.UPDATE_RESULT_SUCCESS, payload: result };
+  },
+
+
 };
 
 export default actionsFunction;

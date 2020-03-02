@@ -34,40 +34,34 @@ import * as types from "../actionTypes";
 
 // Init
 const initialState = {
-  professor: {}
+  branch: {}
 };
 
 // Reducer
-export default function professorEditEditReducer(state = JSON.parse(JSON.stringify(initialState)), action) {
+export default function BranchEditEditReducer(state = JSON.parse(JSON.stringify(initialState)), action) {
   switch (action.type) { 
     
     // Insert here your custom reducers
 
 
     // START REDUCERS
-    case types.CREATE_PROFESSOR_SUCCESS:
-      return { ...state, professor: action.payload };
-    case types.UPDATE_PROFESSOR_SUCCESS:
-      return { ...state, professor: action.payload };
-    case types.GET_PROFESSOR_SUCCESS:
-      return { ...state, professor: action.payload };
-    case types.FINDBY_TEACHER_STUDENT_SUCCESS:
-      return { ...state, listStudent: action.payload };
-    case types.LIST_SEMESTER_SUCCESS:
+    case types.CREATE_BRANCH_SUCCESS:
+      return { ...state, branch: action.payload };
+    case types.UPDATE_BRANCH_SUCCESS:
+      return { ...state, branch: action.payload };
+    case types.GET_BRANCH_SUCCESS:
+      return { ...state, branch: action.payload };
+    case types.FINDBYBRANCH_SEMESTER_SUCCESS:
       return { ...state, listSemester: action.payload };
-    case types.LIST_SUBJECT_SUCCESS:
-      return { ...state, listSubject: action.payload };
-    case types.LIST_STUDENT_SUCCESS:
+    case types.FINDBYBRANCH_STUDENT_SUCCESS:
       return { ...state, listStudent: action.payload };
-    case types.LIST_BATCH_SUCCESS:
-      return { ...state, listBatch: action.payload };
-    case types.FINDBYPROFESSOR_RESULT_SUCCESS:
+    case types.FINDBYBRANCH_RESULT_SUCCESS:
       return { ...state, listResult: action.payload };
-    case types.FINDBYPROFESSOR_SUBJECT_SUCCESS:
+    case types.FINDBYBRANCH_SUBJECT_SUCCESS:
       return { ...state, listSubject: action.payload };
      // END REDUCERS
     
-    case types.RESET_PROFESSOR:
+    case types.RESET_BRANCH:
       state = initialState;
       return state;
     default:

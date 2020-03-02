@@ -97,6 +97,63 @@ let actionsFunction = {
   },
 
 
+  // Find by _batch
+  findBy_batch: function(key) {
+    return function(dispatch) {
+      return ProfessorApi
+        .findBy_batch(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_batchSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_batchSuccess: function(item) {
+    return { type: types.FINDBY_BATCH_PROFESSOR_SUCCESS, payload: item };
+  },
+
+
+  // Find by _student
+  findBy_student: function(key) {
+    return function(dispatch) {
+      return ProfessorApi
+        .findBy_student(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_studentSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_studentSuccess: function(item) {
+    return { type: types.FINDBY_STUDENT_PROFESSOR_SUCCESS, payload: item };
+  },
+
+
+  // Find by _subject
+  findBy_subject: function(key) {
+    return function(dispatch) {
+      return ProfessorApi
+        .findBy_subject(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_subjectSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_subjectSuccess: function(item) {
+    return { type: types.FINDBY_SUBJECT_PROFESSOR_SUCCESS, payload: item };
+  },
+
+
   // Get professor
   loadProfessor: function(id) {
     return function(dispatch) {

@@ -68,14 +68,35 @@ const generatedModel = {
         type: "Number"
       },
       // RELATIONS
+      branch: [{
+        type: Schema.ObjectId,
+        ref: "Branch"
+      }],
+      professor: {
+        type: Schema.ObjectId,
+        ref: "professor"
+      },
+      sem: {
+        type: Schema.ObjectId,
+        ref: "Semester"
+      },
+      student: [{
+        type: Schema.ObjectId,
+        ref: "Student"
+      }],
       
       
       // EXTERNAL RELATIONS
       /*
       _result: {
-        type: Schema.ObjectId,
+        type: Schema.ObjectId, 
+        required: true,
         ref: "Student"
       },
+      result: [{
+        type: Schema.ObjectId,
+        ref: "Semester"
+      }],
       */
     });
 
@@ -104,6 +125,85 @@ const generatedModel = {
   // CRUD METHODS
 
 
+  /**
+  * resultModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  async create(item) {
+    const obj = new generatedModel.model(item);
+    return await obj.save();
+  },
+  
+  /**
+  * resultModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  async delete(id) {
+    return await generatedModel.model.findByIdAndRemove(id);
+  },
+  
+  /**
+  * resultModel.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBybranch(key) {
+    return await generatedModel.model.find({ 'branch' : key});
+  },
+  
+  /**
+  * resultModel.findByprofessor
+  *   @description CRUD ACTION findByprofessor
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findByprofessor(key) {
+    return await generatedModel.model.find({ 'professor' : key});
+  },
+  
+  /**
+  * resultModel.findBysem
+  *   @description CRUD ACTION findBysem
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBysem(key) {
+    return await generatedModel.model.find({ 'sem' : key});
+  },
+  
+  /**
+  * resultModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  async get(id) {
+    return await generatedModel.model.findOne({ _id : id });
+  },
+  
+  /**
+  * resultModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  async list() {
+    return await generatedModel.model.find();
+  },
+  
+  /**
+  * resultModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  async update(item) { 
+    return await generatedModel.model.findOneAndUpdate({ _id: item._id }, item, {'new': true});
+  },
+  
 
 
 };

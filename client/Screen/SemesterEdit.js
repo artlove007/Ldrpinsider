@@ -61,63 +61,64 @@ import { connect } from "react-redux";
 
 
 // START IMPORT ACTIONS
-import ProfessorActions from "../redux/actions/ProfessorActions";
-import StudentActions from "../redux/actions/StudentActions";
 import SemesterActions from "../redux/actions/SemesterActions";
-import SubjectActions from "../redux/actions/SubjectActions";
-import BatchActions from "../redux/actions/BatchActions";
+import ProfessorActions from "../redux/actions/ProfessorActions";
+import BranchActions from "../redux/actions/BranchActions";
 import ResultActions from "../redux/actions/ResultActions";
+import SubjectActions from "../redux/actions/SubjectActions";
+import StudentActions from "../redux/actions/StudentActions";
 
 // END IMPORT ACTIONS
 
 /** APIs
 
-* actionsProfessor.create
+* actionsSemester.create
 *	@description CRUD ACTION create
 *
-* actionsProfessor.update
+* actionsSemester.update
 *	@description CRUD ACTION update
 *	@param ObjectId id - Id
 *
-* actionsProfessor.get
+* actionsSemester.get
 *	@description CRUD ACTION get
 *	@param ObjectId id - Id resource
 *
-* actionsStudent.findBy_teacher
-*	@description CRUD ACTION findBy_teacher
+* actionsProfessor.findBy_student
+*	@description CRUD ACTION findBy_student
 *	@param Objectid key - Id of model to search for
 *
-* actionsSemester.list
+* actionsBranch.list
+*	@description CRUD ACTION list
+*
+* actionsResult.list
 *	@description CRUD ACTION list
 *
 * actionsSubject.list
 *	@description CRUD ACTION list
 *
-* actionsStudent.list
-*	@description CRUD ACTION list
-*
-* actionsBatch.list
-*	@description CRUD ACTION list
-*
-* actionsResult.findByprofessor
-*	@description CRUD ACTION findByprofessor
+* actionsStudent.findBysemester
+*	@description CRUD ACTION findBysemester
 *	@param Objectid key - Id of model to search for
 *
-* actionsSubject.findByprofessor
-*	@description CRUD ACTION findByprofessor
+* actionsResult.findBysem
+*	@description CRUD ACTION findBysem
+*	@param Objectid key - Id of model to search for
+*
+* actionsSubject.findBysemester
+*	@description CRUD ACTION findBysemester
 *	@param Objectid key - Id of model to search for
 *
 
 **/
 
 
-class ProfessorEdit extends Component {
+class SemesterEdit extends Component {
   
-  // Init professor
+  // Init semester
   constructor(props) {
     super(props);
     this.state = {
-      professor: {},
+      semester: {},
       authorized: false
     };
   }
@@ -140,17 +141,19 @@ class ProfessorEdit extends Component {
       // Load data
       const itemId = this.props.navigation.getParam("id", "new");
       if (itemId !== "new") {
-        this.props.actionsProfessor.loadProfessor(itemId);
-        this.props.actionsStudent.findBy_teacher(itemId);
+        this.props.actionsSemester.loadSemester(itemId);
+        this.props.actionsProfessor.findBy_student(itemId);
+        this.props.actionsResult.findBysem(itemId);
+        this.props.actionsSubject.findBysemester(itemId);
+        this.props.actionsStudent.findBysemester(itemId);
       } else {
         this.setState({
-          professor: {}
+          semester: {}
         });
       }
       
-      this.props.actionsBatch.loadBatchList();
-      this.props.actionsStudent.loadStudentList();
-      this.props.actionsSemester.loadSemesterList();
+      this.props.actionsBranch.loadBranchList();
+      this.props.actionsResult.loadResultList();
       this.props.actionsSubject.loadSubjectList();
     });
   }
@@ -158,15 +161,15 @@ class ProfessorEdit extends Component {
   // Clear reducer
   componentWillUnmount() {
     this.setState({
-      professor: {}
+      semester: {}
     });
-    this.props.actionsProfessor.reset();
+    this.props.actionsSemester.reset();
   }
 
-  // Insert props professor in state
+  // Insert props semester in state
   componentWillReceiveProps(props) {
     this.setState({
-      professor: props.professor
+      semester: props.semester
     });
   }
 
@@ -182,15 +185,15 @@ class ProfessorEdit extends Component {
     }
 
     // Save
-    if (this.state.professor._id) {
+    if (this.state.semester._id) {
       // Edit
-      this.props.actionsProfessor.saveProfessor(this.state.professor).then(data => {
-        this.props.navigation.navigate("ProfessorList");
+      this.props.actionsSemester.saveSemester(this.state.semester).then(data => {
+        this.props.navigation.navigate("SemesterList");
       });
     } else {
       // Create
-      this.props.actionsProfessor.createProfessor(this.state.professor).then(data => {
-        this.props.navigation.navigate("ProfessorList");
+      this.props.actionsSemester.createSemester(this.state.semester).then(data => {
+        this.props.navigation.navigate("SemesterList");
       });
     }
   }
@@ -215,7 +218,7 @@ class ProfessorEdit extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Detail Professor</Title>
+            <Title>Detail Semester</Title>
           </Body>
           <Right>
             <Button transparent onPress={() => this.save()}>
@@ -228,90 +231,38 @@ class ProfessorEdit extends Component {
             
             <Item floatingLabel>
               <Label>
-                Address
+                Semester
               </Label>
               <Input
                 onChangeText={value =>
-                  this.setState(Object.assign(this.state.professor, { address: value }))
+                  this.setState(Object.assign(this.state.semester, { semester: value }))
                 }
-                value={this.state.professor.address && this.state.professor.address.toString()}
-              />
-            </Item>
-          
-            
-            <Item floatingLabel>
-              <Label>
-                Contact_no
-              </Label>
-              <Input
-                onChangeText={value =>
-                  this.setState(Object.assign(this.state.professor, { contact_no: value }))
-                }
-                value={this.state.professor.contact_no && this.state.professor.contact_no.toString()}
-              />
-            </Item>
-          
-            
-            <Item floatingLabel>
-              <Label>
-                Email
-              </Label>
-              <Input
-                onChangeText={value =>
-                  this.setState(Object.assign(this.state.professor, { email: value }))
-                }
-                value={this.state.professor.email && this.state.professor.email.toString()}
-              />
-            </Item>
-          
-            
-            <Item floatingLabel>
-              <Label>
-                F_name
-              </Label>
-              <Input
-                onChangeText={value =>
-                  this.setState(Object.assign(this.state.professor, { f_name: value }))
-                }
-                value={this.state.professor.f_name && this.state.professor.f_name.toString()}
-              />
-            </Item>
-          
-            
-            <Item floatingLabel>
-              <Label>
-                L_name
-              </Label>
-              <Input
-                onChangeText={value =>
-                  this.setState(Object.assign(this.state.professor, { l_name: value }))
-                }
-                value={this.state.professor.l_name && this.state.professor.l_name.toString()}
+                value={this.state.semester.semester && this.state.semester.semester.toString()}
               />
             </Item>
           
 
           {/* RELATIONS */}
           
-          {/* Relation 1:m _batch with Batch */}
+          {/* Relation 1:m branch with Branch */}
           
           <Item stackedLabel>
             <Label >
-              _batch
+              Branch
             </Label>
             <Picker
               mode="dropdown"
               iosHeader="Select a value"
               iosIcon={<Icon name="arrow-down" />}
               style={{ width: undefined }}
-              selectedValue={this.state.professor._batch }
-              value={this.state.professor._batch }
+              selectedValue={this.state.semester.branch }
+              value={this.state.semester.branch }
               onValueChange={value =>
-                this.setState(Object.assign(this.state.professor, { _batch: value }))
+                this.setState(Object.assign(this.state.semester, { branch: value }))
               }
             >
-              {this.props.listBatch &&
-                this.props.listBatch.map(row => (
+              {this.props.listBranch &&
+                this.props.listBranch.map(row => (
                   <Picker.Item label={row._id} value={row._id} key={row._id}>
                     {row._id}
                   </Picker.Item>
@@ -320,41 +271,14 @@ class ProfessorEdit extends Component {
           </Item>
           
           
-          {/* Relation 1:m _student with Student */}
-          
-          <Item stackedLabel>
-            <Label >
-              _student
-            </Label>
-            <Picker
-              mode="dropdown"
-              iosHeader="Select a value"
-              iosIcon={<Icon name="arrow-down" />}
-              style={{ width: undefined }}
-              selectedValue={this.state.professor._student }
-              value={this.state.professor._student }
-              onValueChange={value =>
-                this.setState(Object.assign(this.state.professor, { _student: value }))
-              }
-            >
-              {this.props.listStudent &&
-                this.props.listStudent.map(row => (
-                  <Picker.Item label={row._id} value={row._id} key={row._id}>
-                    {row._id}
-                  </Picker.Item>
-                ))}
-            </Picker>
-          </Item>
-          
-          
-          {/* Relation m:m _student with Semester */}
+          {/* Relation m:m result with result */}
           
           <Item stackedLabel>              
             <Label >
-              _student
+              Result
             </Label>
             <SectionedMultiSelect
-              items={this.props.listSemester }
+              items={this.props.listResult }
               displayKey="_id"
               uniqueKey="_id"
               selectText="Choose some items..."
@@ -364,28 +288,28 @@ class ProfessorEdit extends Component {
                 return "Choose some items...";
               }}
               onSelectedItemsChange={value =>
-                this.setState(Object.assign(this.state.professor, { _student: value }))
+                this.setState(Object.assign(this.state.semester, { result: value }))
               }
-              selectedItems={this.state.professor._student }
+              selectedItems={this.state.semester.result }
             />
           </Item>
           
           
-          {/* Relation 1:m _subject with subject */}
+          {/* Relation 1:m semester with subject */}
           
           <Item stackedLabel>
             <Label >
-              _subject
+              Semester
             </Label>
             <Picker
               mode="dropdown"
               iosHeader="Select a value"
               iosIcon={<Icon name="arrow-down" />}
               style={{ width: undefined }}
-              selectedValue={this.state.professor._subject }
-              value={this.state.professor._subject }
+              selectedValue={this.state.semester.semester }
+              value={this.state.semester.semester }
               onValueChange={value =>
-                this.setState(Object.assign(this.state.professor, { _subject: value }))
+                this.setState(Object.assign(this.state.semester, { semester: value }))
               }
             >
               {this.props.listSubject &&
@@ -399,6 +323,15 @@ class ProfessorEdit extends Component {
           
           
           {/* EXTERNAL RELATIONS */}
+          
+          {/* External relation with professor */}
+
+          
+          {/* External relation with result */}
+
+          
+          {/* External relation with subject */}
+
           
           {/* External relation with Student */}
 
@@ -414,31 +347,43 @@ class ProfessorEdit extends Component {
 // Store actions
 const mapDispatchToProps = function(dispatch) {
   return { 
+    actionsSemester: bindActionCreators(SemesterActions, dispatch),
     actionsProfessor: bindActionCreators(ProfessorActions, dispatch),
+    actionsBranch: bindActionCreators(BranchActions, dispatch),
+    actionsResult: bindActionCreators(ResultActions, dispatch),
+    actionsSubject: bindActionCreators(SubjectActions, dispatch),
+    actionsStudent: bindActionCreators(StudentActions, dispatch),
   };
 };
 
 // Validate types
-ProfessorEdit.propTypes = { 
+SemesterEdit.propTypes = { 
+  actionsSemester: PropTypes.object.isRequired,
   actionsProfessor: PropTypes.object.isRequired,
+  actionsBranch: PropTypes.object.isRequired,
+  actionsResult: PropTypes.object.isRequired,
+  actionsSubject: PropTypes.object.isRequired,
+  actionsStudent: PropTypes.object.isRequired,
 };
 
 // Get props from state
 function mapStateToProps(state, ownProps) {
   return {
-    professor: state.ProfessorEditReducer.professor,
-    listBatch: state.ProfessorEditReducer.listBatch,
-    listStudent: state.ProfessorEditReducer.listStudent,
-    listSemester: state.ProfessorEditReducer.listSemester,
-    listSubject: state.ProfessorEditReducer.listSubject,
-    listStudent: state.ProfessorEditReducer.listStudent
+    semester: state.SemesterEditReducer.semester,
+    listBranch: state.SemesterEditReducer.listBranch,
+    listResult: state.SemesterEditReducer.listResult,
+    listSubject: state.SemesterEditReducer.listSubject,
+    listProfessor: state.SemesterEditReducer.listProfessor,
+    listResult: state.SemesterEditReducer.listResult,
+    listSubject: state.SemesterEditReducer.listSubject,
+    listStudent: state.SemesterEditReducer.listStudent
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProfessorEdit);
+)(SemesterEdit);
 
 const styles = StyleSheet.create({
   validatorItem: { borderColor: "red" },

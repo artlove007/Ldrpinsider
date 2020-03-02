@@ -57,6 +57,33 @@ export default class SideBar extends Component {
           </ListItem>
           {/* START MY SCREENS */}
  
+          <ListItem onPress={() => this.props.navigation.navigate("BatchList")}>
+            <IconMaterial
+              name="keyboard-arrow-right"
+              size={20}
+              style={styles.icons}
+            />
+            <Text>List Batch</Text>
+          </ListItem>
+          
+          <ListItem onPress={() => this.props.navigation.navigate("BranchList")}>
+            <IconMaterial
+              name="keyboard-arrow-right"
+              size={20}
+              style={styles.icons}
+            />
+            <Text>List Branch</Text>
+          </ListItem>
+          
+          <ListItem onPress={() => this.props.navigation.navigate("SemesterList")}>
+            <IconMaterial
+              name="keyboard-arrow-right"
+              size={20}
+              style={styles.icons}
+            />
+            <Text>List Semester</Text>
+          </ListItem>
+          
           <ListItem onPress={() => this.props.navigation.navigate("StudentList")}>
             <IconMaterial
               name="keyboard-arrow-right"
@@ -73,6 +100,24 @@ export default class SideBar extends Component {
               style={styles.icons}
             />
             <Text>List professor</Text>
+          </ListItem>
+          
+          <ListItem onPress={() => this.props.navigation.navigate("resultList")}>
+            <IconMaterial
+              name="keyboard-arrow-right"
+              size={20}
+              style={styles.icons}
+            />
+            <Text>List result</Text>
+          </ListItem>
+          
+          <ListItem onPress={() => this.props.navigation.navigate("subjectList")}>
+            <IconMaterial
+              name="keyboard-arrow-right"
+              size={20}
+              style={styles.icons}
+            />
+            <Text>List subject</Text>
           </ListItem>
           {/* END MY SCREENS */}
 

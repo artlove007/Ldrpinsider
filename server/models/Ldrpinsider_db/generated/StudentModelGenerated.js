@@ -84,17 +84,34 @@ const generatedModel = {
       },
       // RELATIONS
       _result: {
-        type: Schema.ObjectId,
+        type: Schema.ObjectId, 
+        required: true,
         ref: "result"
       },
       _subject: {
-        type: Schema.ObjectId,
+        type: Schema.ObjectId, 
+        required: true,
         ref: "subject"
       },
       _teacher: [{
-        type: Schema.ObjectId,
+        type: Schema.ObjectId, 
+        required: true,
         ref: "professor"
       }],
+      batch: [{
+        type: Schema.ObjectId, 
+        required: true,
+        ref: "Batch"
+      }],
+      branch: [{
+        type: Schema.ObjectId, 
+        required: true,
+        ref: "Branch"
+      }],
+      semester: {
+        type: Schema.ObjectId,
+        ref: "Semester"
+      },
       
       
       // EXTERNAL RELATIONS
@@ -103,6 +120,10 @@ const generatedModel = {
         type: Schema.ObjectId,
         ref: "professor"
       },
+      student: [{
+        type: Schema.ObjectId,
+        ref: "result"
+      }],
       */
     });
 
@@ -149,6 +170,66 @@ const generatedModel = {
   */
   async delete(id) {
     return await generatedModel.model.findByIdAndRemove(id);
+  },
+  
+  /**
+  * StudentModel.findBy_result
+  *   @description CRUD ACTION findBy_result
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_result(key) {
+    return await generatedModel.model.find({ '_result' : key});
+  },
+  
+  /**
+  * StudentModel.findBy_subject
+  *   @description CRUD ACTION findBy_subject
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_subject(key) {
+    return await generatedModel.model.find({ '_subject' : key});
+  },
+  
+  /**
+  * StudentModel.findBy_teacher
+  *   @description CRUD ACTION findBy_teacher
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBy_teacher(key) {
+    return await generatedModel.model.find({ '_teacher' : key});
+  },
+  
+  /**
+  * StudentModel.findBybatch
+  *   @description CRUD ACTION findBybatch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBybatch(key) {
+    return await generatedModel.model.find({ 'batch' : key});
+  },
+  
+  /**
+  * StudentModel.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBybranch(key) {
+    return await generatedModel.model.find({ 'branch' : key});
+  },
+  
+  /**
+  * StudentModel.findBysemester
+  *   @description CRUD ACTION findBysemester
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  async findBysemester(key) {
+    return await generatedModel.model.find({ 'semester' : key});
   },
   
   /**

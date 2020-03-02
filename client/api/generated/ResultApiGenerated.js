@@ -57,6 +57,132 @@ class ResultApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * resultService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createResult(result) {
+    return axios.post(ResultApiGenerated.contextUrl, result )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * resultService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteResult(id) {
+    return axios.delete(ResultApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * resultService.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBybranch(id) {
+    return axios.get(ResultApiGenerated.contextUrl + "/findBybranch/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * resultService.findByprofessor
+  *   @description CRUD ACTION findByprofessor
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findByprofessor(id) {
+    return axios.get(ResultApiGenerated.contextUrl + "/findByprofessor/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * resultService.findBysem
+  *   @description CRUD ACTION findBysem
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  static findBysem(id) {
+    return axios.get(ResultApiGenerated.contextUrl + "/findBysem/" + id )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * resultService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneResult(id) {
+    return axios.get(ResultApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * resultService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getResultList() {
+    return axios.get(ResultApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * resultService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveResult(result) {
+    return axios.post(ResultApiGenerated.contextUrl + "/" + result._id, result )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

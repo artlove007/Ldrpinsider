@@ -57,6 +57,84 @@ class BatchApiGenerated {
 
   // CRUD METHODS
 
+  /**
+  * BatchService.create
+  *   @description CRUD ACTION create
+  *
+  */
+  static createBatch(batch) {
+    return axios.post(BatchApiGenerated.contextUrl, batch )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BatchService.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  static deleteBatch(id) {
+    return axios.delete(BatchApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BatchService.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  static getOneBatch(id) {
+    return axios.get(BatchApiGenerated.contextUrl + "/" + id)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BatchService.list
+  *   @description CRUD ACTION list
+  *
+  */
+  static getBatchList() {
+    return axios.get(BatchApiGenerated.contextUrl)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
+  /**
+  * BatchService.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  static saveBatch(batch) {
+    return axios.post(BatchApiGenerated.contextUrl + "/" + batch._id, batch )
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  }
+
 
 
     // Custom APIs

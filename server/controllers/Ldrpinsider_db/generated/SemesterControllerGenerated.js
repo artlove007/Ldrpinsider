@@ -58,12 +58,147 @@ const generatedControllers = {
    */
   init: router => {
     const baseUrl = `${Properties.api}/semester`;
+    router.post(baseUrl + "", authorize([]), SemesterController.create);
+    router.delete(baseUrl + "/:id", authorize([]), SemesterController.delete);
+    router.get(baseUrl + "/findBybranch/:key", authorize([]), SemesterController.findBybranch);
+    router.get(baseUrl + "/findByresult/:key", authorize([]), SemesterController.findByresult);
+    router.get(baseUrl + "/findBysemester/:key", authorize([]), SemesterController.findBysemester);
+    router.get(baseUrl + "/:id", authorize([]), SemesterController.get);
+    router.get(baseUrl + "", authorize([]), SemesterController.list);
+    router.post(baseUrl + "/:id", authorize([]), SemesterController.update);
   },
 
 
   // CRUD METHODS
 
 
+  /**
+  * SemesterModel.create
+  *   @description CRUD ACTION create
+  *
+  */
+  create: async (req, res) => {
+    try {
+      const result = await SemesterModel.create(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * SemesterModel.delete
+  *   @description CRUD ACTION delete
+  *   @param ObjectId id Id
+  *
+  */
+  delete: async (req, res) => {
+    try {
+      const result = await SemesterModel.delete(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * SemesterModel.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBybranch: async (req, res) => {
+    try {
+      const result = await SemesterModel.findBybranch(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * SemesterModel.findByresult
+  *   @description CRUD ACTION findByresult
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findByresult: async (req, res) => {
+    try {
+      const result = await SemesterModel.findByresult(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * SemesterModel.findBysemester
+  *   @description CRUD ACTION findBysemester
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBysemester: async (req, res) => {
+    try {
+      const result = await SemesterModel.findBysemester(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * SemesterModel.get
+  *   @description CRUD ACTION get
+  *   @param ObjectId id Id resource
+  *
+  */
+  get: async (req, res) => {
+    try {
+      const result = await SemesterModel.get(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * SemesterModel.list
+  *   @description CRUD ACTION list
+  *
+  */
+  list: async (req, res) => {
+    try {
+      const result = await SemesterModel.list();
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  
+  /**
+  * SemesterModel.update
+  *   @description CRUD ACTION update
+  *   @param ObjectId id Id
+  *
+  */
+  update: async (req, res) => {
+    try {
+      const result = await SemesterModel.update(req.body);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
   
   // Custom APIs
 

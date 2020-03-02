@@ -59,6 +59,100 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create branch
+  createBranch: function(branch) {
+    return function(dispatch) {
+      return BranchApi
+        .createBranch(branch)
+        .then(branch => {
+          dispatch(actionsFunction.createBranchSuccess(branch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createBranchSuccess: function(branch) {
+    return { type: types.CREATE_BRANCH_SUCCESS, payload: branch };
+  },
+
+
+  // Delete branch
+  deleteBranch: function(id) {
+    return function(dispatch) {
+      return BranchApi
+        .deleteBranch(id)
+        .then(branch => {
+          dispatch(actionsFunction.deleteBranchSuccess(branch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteBranchSuccess: function(branch) {
+    return { type: types.DELETE_BRANCH_SUCCESS, payload: branch };
+  },
+
+
+  // Get branch
+  loadBranch: function(id) {
+    return function(dispatch) {
+      return BranchApi
+        .getOneBranch(id)
+        .then(branch => {
+          dispatch(actionsFunction.loadBranchSuccess(branch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadBranchSuccess: function(branch) {
+    return { type: types.GET_BRANCH_SUCCESS, payload: branch };
+  },
+
+  // Load  list
+  loadBranchList: function() {
+    return function(dispatch) {
+      return BranchApi
+        .getBranchList()
+        .then(list => {
+          dispatch(actionsFunction.loadBranchListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadBranchListSuccess: function(list) {
+    return { type: types.LIST_BRANCH_SUCCESS, payload: list };
+  },
+
+	
+  // Save branch
+  saveBranch: function(branch) {
+    return function(dispatch) {
+      return BranchApi
+        .saveBranch(branch)
+        .then(branch => {
+          dispatch(actionsFunction.saveBranchSuccess(branch));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveBranchSuccess: function(branch) {
+    return { type: types.UPDATE_BRANCH_SUCCESS, payload: branch };
+  },
+
+
 };
 
 export default actionsFunction;

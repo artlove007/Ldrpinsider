@@ -97,6 +97,120 @@ let actionsFunction = {
   },
 
 
+  // Find by _result
+  findBy_result: function(key) {
+    return function(dispatch) {
+      return StudentApi
+        .findBy_result(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_resultSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_resultSuccess: function(item) {
+    return { type: types.FINDBY_RESULT_STUDENT_SUCCESS, payload: item };
+  },
+
+
+  // Find by _subject
+  findBy_subject: function(key) {
+    return function(dispatch) {
+      return StudentApi
+        .findBy_subject(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_subjectSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_subjectSuccess: function(item) {
+    return { type: types.FINDBY_SUBJECT_STUDENT_SUCCESS, payload: item };
+  },
+
+
+  // Find by _teacher
+  findBy_teacher: function(key) {
+    return function(dispatch) {
+      return StudentApi
+        .findBy_teacher(key)
+        .then(item => {
+          dispatch(actionsFunction.findBy_teacherSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBy_teacherSuccess: function(item) {
+    return { type: types.FINDBY_TEACHER_STUDENT_SUCCESS, payload: item };
+  },
+
+
+  // Find by batch
+  findBybatch: function(key) {
+    return function(dispatch) {
+      return StudentApi
+        .findBybatch(key)
+        .then(item => {
+          dispatch(actionsFunction.findBybatchSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBybatchSuccess: function(item) {
+    return { type: types.FINDBYBATCH_STUDENT_SUCCESS, payload: item };
+  },
+
+
+  // Find by branch
+  findBybranch: function(key) {
+    return function(dispatch) {
+      return StudentApi
+        .findBybranch(key)
+        .then(item => {
+          dispatch(actionsFunction.findBybranchSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBybranchSuccess: function(item) {
+    return { type: types.FINDBYBRANCH_STUDENT_SUCCESS, payload: item };
+  },
+
+
+  // Find by semester
+  findBysemester: function(key) {
+    return function(dispatch) {
+      return StudentApi
+        .findBysemester(key)
+        .then(item => {
+          dispatch(actionsFunction.findBysemesterSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBysemesterSuccess: function(item) {
+    return { type: types.FINDBYSEMESTER_STUDENT_SUCCESS, payload: item };
+  },
+
+
   // Get student
   loadStudent: function(id) {
     return function(dispatch) {

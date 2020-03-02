@@ -60,6 +60,12 @@ const generatedControllers = {
     const baseUrl = `${Properties.api}/student`;
     router.post(baseUrl + "", authorize([]), StudentController.create);
     router.delete(baseUrl + "/:id", authorize([]), StudentController.delete);
+    router.get(baseUrl + "/findBy_result/:key", authorize([]), StudentController.findBy_result);
+    router.get(baseUrl + "/findBy_subject/:key", authorize([]), StudentController.findBy_subject);
+    router.get(baseUrl + "/findBy_teacher/:key", authorize([]), StudentController.findBy_teacher);
+    router.get(baseUrl + "/findBybatch/:key", authorize([]), StudentController.findBybatch);
+    router.get(baseUrl + "/findBybranch/:key", authorize([]), StudentController.findBybranch);
+    router.get(baseUrl + "/findBysemester/:key", authorize([]), StudentController.findBysemester);
     router.get(baseUrl + "/:id", authorize([]), StudentController.get);
     router.get(baseUrl + "", authorize([]), StudentController.list);
     router.post(baseUrl + "/:id", authorize([]), StudentController.update);
@@ -93,6 +99,102 @@ const generatedControllers = {
   delete: async (req, res) => {
     try {
       const result = await StudentModel.delete(req.params.id);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentModel.findBy_result
+  *   @description CRUD ACTION findBy_result
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_result: async (req, res) => {
+    try {
+      const result = await StudentModel.findBy_result(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentModel.findBy_subject
+  *   @description CRUD ACTION findBy_subject
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_subject: async (req, res) => {
+    try {
+      const result = await StudentModel.findBy_subject(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentModel.findBy_teacher
+  *   @description CRUD ACTION findBy_teacher
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBy_teacher: async (req, res) => {
+    try {
+      const result = await StudentModel.findBy_teacher(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentModel.findBybatch
+  *   @description CRUD ACTION findBybatch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBybatch: async (req, res) => {
+    try {
+      const result = await StudentModel.findBybatch(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentModel.findBybranch
+  *   @description CRUD ACTION findBybranch
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBybranch: async (req, res) => {
+    try {
+      const result = await StudentModel.findBybranch(req.params.key);
+      res.json(result);
+    } catch (err) {
+      const safeErr = ErrorManager.getSafeError(err);
+      res.status(safeErr.status).json(safeErr);
+    }
+  },
+  
+  /**
+  * StudentModel.findBysemester
+  *   @description CRUD ACTION findBysemester
+  *   @param Objectid key Id of model to search for
+  *
+  */
+  findBysemester: async (req, res) => {
+    try {
+      const result = await StudentModel.findBysemester(req.params.key);
       res.json(result);
     } catch (err) {
       const safeErr = ErrorManager.getSafeError(err);

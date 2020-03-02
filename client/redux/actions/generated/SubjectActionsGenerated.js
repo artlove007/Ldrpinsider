@@ -59,6 +59,157 @@ let actionsFunction = {
 
   //CRUD METHODS
 
+  // Create subject
+  createSubject: function(subject) {
+    return function(dispatch) {
+      return SubjectApi
+        .createSubject(subject)
+        .then(subject => {
+          dispatch(actionsFunction.createSubjectSuccess(subject));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  createSubjectSuccess: function(subject) {
+    return { type: types.CREATE_SUBJECT_SUCCESS, payload: subject };
+  },
+
+
+  // Delete subject
+  deleteSubject: function(id) {
+    return function(dispatch) {
+      return SubjectApi
+        .deleteSubject(id)
+        .then(subject => {
+          dispatch(actionsFunction.deleteSubjectSuccess(subject));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  deleteSubjectSuccess: function(subject) {
+    return { type: types.DELETE_SUBJECT_SUCCESS, payload: subject };
+  },
+
+
+  // Find by branch
+  findBybranch: function(key) {
+    return function(dispatch) {
+      return SubjectApi
+        .findBybranch(key)
+        .then(item => {
+          dispatch(actionsFunction.findBybranchSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBybranchSuccess: function(item) {
+    return { type: types.FINDBYBRANCH_SUBJECT_SUCCESS, payload: item };
+  },
+
+
+  // Find by professor
+  findByprofessor: function(key) {
+    return function(dispatch) {
+      return SubjectApi
+        .findByprofessor(key)
+        .then(item => {
+          dispatch(actionsFunction.findByprofessorSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findByprofessorSuccess: function(item) {
+    return { type: types.FINDBYPROFESSOR_SUBJECT_SUCCESS, payload: item };
+  },
+
+
+  // Find by semester
+  findBysemester: function(key) {
+    return function(dispatch) {
+      return SubjectApi
+        .findBysemester(key)
+        .then(item => {
+          dispatch(actionsFunction.findBysemesterSuccess(item));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  findBysemesterSuccess: function(item) {
+    return { type: types.FINDBYSEMESTER_SUBJECT_SUCCESS, payload: item };
+  },
+
+
+  // Get subject
+  loadSubject: function(id) {
+    return function(dispatch) {
+      return SubjectApi
+        .getOneSubject(id)
+        .then(subject => {
+          dispatch(actionsFunction.loadSubjectSuccess(subject));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadSubjectSuccess: function(subject) {
+    return { type: types.GET_SUBJECT_SUCCESS, payload: subject };
+  },
+
+  // Load  list
+  loadSubjectList: function() {
+    return function(dispatch) {
+      return SubjectApi
+        .getSubjectList()
+        .then(list => {
+          dispatch(actionsFunction.loadSubjectListSuccess(list));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  loadSubjectListSuccess: function(list) {
+    return { type: types.LIST_SUBJECT_SUCCESS, payload: list };
+  },
+
+	
+  // Save subject
+  saveSubject: function(subject) {
+    return function(dispatch) {
+      return SubjectApi
+        .saveSubject(subject)
+        .then(subject => {
+          dispatch(actionsFunction.saveSubjectSuccess(subject));
+        })
+        .catch(error => {
+          throw error;
+        });
+    };
+  },
+
+  saveSubjectSuccess: function(subject) {
+    return { type: types.UPDATE_SUBJECT_SUCCESS, payload: subject };
+  },
+
+
 };
 
 export default actionsFunction;

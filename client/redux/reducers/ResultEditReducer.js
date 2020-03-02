@@ -34,40 +34,38 @@ import * as types from "../actionTypes";
 
 // Init
 const initialState = {
-  professor: {}
+  result: {}
 };
 
 // Reducer
-export default function professorEditEditReducer(state = JSON.parse(JSON.stringify(initialState)), action) {
+export default function resultEditEditReducer(state = JSON.parse(JSON.stringify(initialState)), action) {
   switch (action.type) { 
     
     // Insert here your custom reducers
 
 
     // START REDUCERS
-    case types.CREATE_PROFESSOR_SUCCESS:
-      return { ...state, professor: action.payload };
-    case types.UPDATE_PROFESSOR_SUCCESS:
-      return { ...state, professor: action.payload };
-    case types.GET_PROFESSOR_SUCCESS:
-      return { ...state, professor: action.payload };
-    case types.FINDBY_TEACHER_STUDENT_SUCCESS:
+    case types.CREATE_RESULT_SUCCESS:
+      return { ...state, result: action.payload };
+    case types.UPDATE_RESULT_SUCCESS:
+      return { ...state, result: action.payload };
+    case types.GET_RESULT_SUCCESS:
+      return { ...state, result: action.payload };
+    case types.FINDBY_RESULT_STUDENT_SUCCESS:
       return { ...state, listStudent: action.payload };
+    case types.FINDBYRESULT_SEMESTER_SUCCESS:
+      return { ...state, listSemester: action.payload };
     case types.LIST_SEMESTER_SUCCESS:
       return { ...state, listSemester: action.payload };
-    case types.LIST_SUBJECT_SUCCESS:
-      return { ...state, listSubject: action.payload };
+    case types.LIST_BRANCH_SUCCESS:
+      return { ...state, listBranch: action.payload };
     case types.LIST_STUDENT_SUCCESS:
       return { ...state, listStudent: action.payload };
-    case types.LIST_BATCH_SUCCESS:
-      return { ...state, listBatch: action.payload };
-    case types.FINDBYPROFESSOR_RESULT_SUCCESS:
-      return { ...state, listResult: action.payload };
-    case types.FINDBYPROFESSOR_SUBJECT_SUCCESS:
-      return { ...state, listSubject: action.payload };
+    case types.LIST_PROFESSOR_SUCCESS:
+      return { ...state, listProfessor: action.payload };
      // END REDUCERS
     
-    case types.RESET_PROFESSOR:
+    case types.RESET_RESULT:
       state = initialState;
       return state;
     default:
