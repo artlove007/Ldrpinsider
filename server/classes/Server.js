@@ -58,8 +58,12 @@ import SecurityController from "../controllers/SecurityController";
 import Database_Ldrpinsider_db from "./Database_Ldrpinsider_db.js";
 
 // Controllers
+import SemesterController from "../controllers/Ldrpinsider_db/SemesterController";
 import StudentController from "../controllers/Ldrpinsider_db/StudentController";
 import UserController from "../controllers/Ldrpinsider_db/UserController";
+import ProfessorController from "../controllers/Ldrpinsider_db/ProfessorController";
+import ResultController from "../controllers/Ldrpinsider_db/ResultController";
+import SubjectController from "../controllers/Ldrpinsider_db/SubjectController";
 
 // End Import Controllers
 
@@ -140,8 +144,12 @@ class Server {
     SecurityController.init(router);
 
     // Start Init Controllers
+		SemesterController.init(router);
 		StudentController.init(router);
 		UserController.init(router);
+		ProfessorController.init(router);
+		ResultController.init(router);
+		SubjectController.init(router);
 		 // End Init Controllers
 
     this.app.use("/", router);

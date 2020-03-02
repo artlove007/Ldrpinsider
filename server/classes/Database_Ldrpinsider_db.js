@@ -38,8 +38,12 @@ import properties from "../properties.js";
 
 // Start Import Models
 
+import SemesterModel from "../models/Ldrpinsider_db/SemesterModel";
 import StudentModel from "../models/Ldrpinsider_db/StudentModel";
 import UserModel from "../models/Ldrpinsider_db/UserModel";
+import ProfessorModel from "../models/Ldrpinsider_db/ProfessorModel";
+import ResultModel from "../models/Ldrpinsider_db/ResultModel";
+import SubjectModel from "../models/Ldrpinsider_db/SubjectModel";
 
 // End Import Models
 
@@ -55,8 +59,12 @@ class Database {
 
     // Start Init Models
 
+		SemesterModel.init();
 		StudentModel.init();
 		UserModel.init();
+		ProfessorModel.init();
+		ResultModel.init();
+		SubjectModel.init();
  // End Init Models
   }
 

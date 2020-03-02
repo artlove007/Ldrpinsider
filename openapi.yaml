@@ -455,6 +455,22 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    Semester:
+      x-skaffolder-id: 5e5ca52552a8e9561a0d30bb
+      x-skaffolder-id-db: 5e5c1f4952a8e9561a0d2e2d
+      x-skaffolder-id-entity: 5e5ca52552a8e9561a0d30b9
+      x-skaffolder-url: /semester
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        semester:
+          type: string
+          x-skaffolder-id-attr: 5e5ca52552a8e9561a0d30ba
+          x-skaffolder-type: String
+      x-skaffolder-relations: 
+      required:
+        - _id
     Student:
       x-skaffolder-id: 5e5c202b52a8e9561a0d2e9c
       x-skaffolder-id-db: 5e5c1f4952a8e9561a0d2e2d
@@ -537,6 +553,74 @@ components:
         - _id
         - password
         - username
+    professor:
+      x-skaffolder-id: 5e5c9cb752a8e9561a0d3091
+      x-skaffolder-id-db: 5e5c1f4952a8e9561a0d2e2d
+      x-skaffolder-id-entity: 5e5c9cb752a8e9561a0d308b
+      x-skaffolder-url: /professor
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        address:
+          type: string
+          x-skaffolder-id-attr: 5e5c9cb752a8e9561a0d3090
+          x-skaffolder-type: String
+        contact_no:
+          type: number
+          x-skaffolder-id-attr: 5e5c9cb752a8e9561a0d308e
+          x-skaffolder-type: Number
+        email:
+          type: string
+          x-skaffolder-id-attr: 5e5c9cb752a8e9561a0d308f
+          x-skaffolder-type: String
+        f_name:
+          type: string
+          x-skaffolder-id-attr: 5e5c9cb752a8e9561a0d308c
+          x-skaffolder-type: String
+        l_name:
+          type: string
+          x-skaffolder-id-attr: 5e5c9cb752a8e9561a0d308d
+          x-skaffolder-type: String
+      x-skaffolder-relations: 
+      required:
+        - _id
+    result:
+      x-skaffolder-id: 5e5c9db352a8e9561a0d30ae
+      x-skaffolder-id-db: 5e5c1f4952a8e9561a0d2e2d
+      x-skaffolder-id-entity: 5e5c9db352a8e9561a0d30ac
+      x-skaffolder-url: /result
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        mark:
+          type: number
+          x-skaffolder-id-attr: 5e5c9db352a8e9561a0d30ad
+          x-skaffolder-type: Number
+      x-skaffolder-relations: 
+      required:
+        - _id
+    subject:
+      x-skaffolder-id: 5e5c9ddd52a8e9561a0d30b4
+      x-skaffolder-id-db: 5e5c1f4952a8e9561a0d2e2d
+      x-skaffolder-id-entity: 5e5c9ddd52a8e9561a0d30b1
+      x-skaffolder-url: /subject
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5e5c9ddd52a8e9561a0d30b2
+          x-skaffolder-type: String
+        sub_id:
+          type: string
+          x-skaffolder-id-attr: 5e5c9ddd52a8e9561a0d30b3
+          x-skaffolder-type: String
+      x-skaffolder-relations: 
+      required:
+        - _id
   x-skaffolder-db:
     - x-skaffolder-id: 5e5c1f4952a8e9561a0d2e2d
       x-skaffolder-name: Ldrpinsider_db
